@@ -1,0 +1,70 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+  
+  /* Cold Creek Brand Colors */
+  --forest-green: #1b4332;
+  --forest-green-light: #2d5a41;
+  --forest-green-dark: #081c15;
+  --earth-brown: #8b4513;
+  --earth-tan: #d2b48c;
+  --earth-tan-light: #f5deb3;
+  --safety-orange: #ff6600;
+  --safety-yellow: #ffd700;
+  --stone-gray: #6b7280;
+  --stone-gray-light: #9ca3af;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  
+  /* Custom Color Palette */
+  --color-forest-green: #1b4332;
+  --color-forest-green-light: #2d5a41;
+  --color-forest-green-dark: #081c15;
+  --color-earth-brown: #8b4513;
+  --color-earth-tan: #d2b48c;
+  --color-earth-tan-light: #f5deb3;
+  --color-safety-orange: #ff6600;
+  --color-safety-yellow: #ffd700;
+  --color-stone-gray: #6b7280;
+  --color-stone-gray-light: #9ca3af;
+  
+  /* Typography */
+  --font-sans: Inter, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono);
+  
+  /* Industrial header font weight */
+  --font-weight-industrial: 800;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: var(--forest-green-dark);
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Inter, system-ui, sans-serif;
+  line-height: 1.6;
+}
+
+/* Industrial header styles */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: var(--font-weight-industrial);
+  line-height: 1.2;
+}
+
+/* Utility classes for brand colors */
+.text-forest-green { color: var(--forest-green); }
+.bg-forest-green { background-color: var(--forest-green); }
+.text-safety-orange { color: var(--safety-orange); }
+.bg-safety-orange { background-color: var(--safety-orange); }
+.text-safety-yellow { color: var(--safety-yellow); }
+.bg-safety-yellow { background-color: var(--safety-yellow); }
