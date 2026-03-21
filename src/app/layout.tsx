@@ -47,57 +47,107 @@ export default function RootLayout({
       className={`${inter.variable} h-full antialiased`}
     >
       <head>
-        {/* Structured Data for Local Business */}
+        {/* Structured Data for Landscaping Service */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
-              "@type": "LocalBusiness",
-              "@id": "https://coldcreeklandservices.com/#organization",
+              "@type": "LandscapingService",
               "name": "Cold Creek Land Services",
-              "description": "Professional land clearing, debris removal, dirt work, and property management services.",
-              "url": "https://coldcreeklandservices.com",
-              "telephone": "+1-XXX-XXX-XXXX", // TODO: Add actual phone number
+              "url": "https://www.coldcreeklandservices.com",
+              "logo": "https://www.coldcreeklandservices.com/logo.png",
+              "image": "https://www.coldcreeklandservices.com/hero-image.jpg",
+              "description": "Professional land management and site prep services. We specialize in land clearing, dirt work, forestry mulching, debris removal, new septic and water line installations, gravel driveways, and snow removal.",
+              "telephone": "+1-555-555-5555",
               "address": {
                 "@type": "PostalAddress",
-                "addressLocality": "Local Area", // TODO: Add actual location
-                "addressRegion": "State",
+                "streetAddress": "YOUR_STREET_ADDRESS",
+                "addressLocality": "YOUR_CITY",
+                "addressRegion": "YOUR_STATE_ABBREVIATION",
+                "postalCode": "YOUR_ZIP_CODE",
                 "addressCountry": "US"
               },
               "geo": {
                 "@type": "GeoCoordinates",
-                "latitude": "XX.XXXX", // TODO: Add actual coordinates
-                "longitude": "XX.XXXX"
+                "latitude": "YOUR_LATITUDE",
+                "longitude": "YOUR_LONGITUDE"
               },
-              "openingHours": "Mo-Fr 08:00-17:00",
-              "priceRange": "$$",
+              "openingHoursSpecification": [
+                {
+                  "@type": "OpeningHoursSpecification",
+                  "dayOfWeek": [
+                    "Monday",
+                    "Tuesday",
+                    "Wednesday",
+                    "Thursday",
+                    "Friday"
+                  ],
+                  "opens": "07:00",
+                  "closes": "17:00"
+                }
+              ],
+              "areaServed": [
+                {
+                  "@type": "City",
+                  "name": "PRIMARY_CITY_SERVED"
+                },
+                {
+                  "@type": "City",
+                  "name": "SECONDARY_CITY_SERVED"
+                }
+              ],
               "hasOfferCatalog": {
                 "@type": "OfferCatalog",
-                "name": "Land Management Services",
+                "name": "Land Management & Site Prep Services",
                 "itemListElement": [
                   {
                     "@type": "Offer",
                     "itemOffered": {
                       "@type": "Service",
-                      "name": "Land Clearing",
-                      "description": "Professional land clearing services"
+                      "name": "Land Clearing & Brush Hogging"
                     }
                   },
                   {
                     "@type": "Offer",
                     "itemOffered": {
                       "@type": "Service",
-                      "name": "Debris Removal & Cleanup",
-                      "description": "Complete debris removal and property cleanup"
+                      "name": "Dirt Work & Site Prep"
                     }
                   },
                   {
                     "@type": "Offer",
                     "itemOffered": {
                       "@type": "Service",
-                      "name": "Dirt Work & Site Prep",
-                      "description": "Site preparation and dirt work services"
+                      "name": "New Septic System & Water Line Install"
+                    }
+                  },
+                  {
+                    "@type": "Offer",
+                    "itemOffered": {
+                      "@type": "Service",
+                      "name": "Gravel Driveway Construction & Repair"
+                    }
+                  },
+                  {
+                    "@type": "Offer",
+                    "itemOffered": {
+                      "@type": "Service",
+                      "name": "Debris, Pond & Fence Row Cleanup"
+                    }
+                  },
+                  {
+                    "@type": "Offer",
+                    "itemOffered": {
+                      "@type": "Service",
+                      "name": "Food Plot Creation"
+                    }
+                  },
+                  {
+                    "@type": "Offer",
+                    "itemOffered": {
+                      "@type": "Service",
+                      "name": "Snow Removal"
                     }
                   }
                 ]
