@@ -17,42 +17,42 @@ interface GalleryImage {
 const galleryImages: GalleryImage[] = [
   {
     id: '1',
-    src: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    src: '/images/landclearing.jpg',
     alt: 'Land clearing project - cleared forest area',
     category: 'Land Clearing',
     title: 'Forest Lot Clearing'
   },
-  {
-    id: '2',
-    src: 'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-    alt: 'Debris removal from storm damage',
-    category: 'Debris Removal',
-    title: 'Storm Cleanup Project'
-  },
+  // {
+  //   id: '2',
+  //   src: '/images/PLACEHOLDER.jpg',
+  //   alt: 'Debris removal from storm damage',
+  //   category: 'Debris Removal',
+  //   title: 'Storm Cleanup Project'
+  // },
   {
     id: '3',
-    src: 'https://images.unsplash.com/photo-1516205651411-aef33a44f7c2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    src: '/images/gravel_driveway.jpg',
     alt: 'Gravel driveway construction',
     category: 'Gravel Driveways',
     title: 'New Driveway Installation'
   },
   {
     id: '4',
-    src: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-    alt: 'Food plot preparation and seeding',
-    category: 'Food Plots',
-    title: 'Wildlife Food Plot'
+    src: '/images/septic.jpg',
+    alt: 'Septic system installation',
+    category: 'Septic Systems',
+    title: 'Septic System Installation'
   },
-  {
-    id: '5',
-    src: 'https://images.unsplash.com/photo-1574263867128-a3d5c1b1deac?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-    alt: 'Pond cleanup and maintenance',
-    category: 'Pond Cleanup',
-    title: 'Pond Restoration'
-  },
+  // {
+  //   id: '5',
+  //   src: '/images/PLACEHOLDER.jpg',
+  //   alt: 'Pond cleanup and maintenance',
+  //   category: 'Pond Cleanup',
+  //   title: 'Pond Restoration'
+  // },
   {
     id: '6',
-    src: 'https://images.unsplash.com/photo-1542038784456-1ea8e935640e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    src: '/images/brush_hogging.jpg',
     alt: 'Brush hogging large field area',
     category: 'Brush Hogging',
     title: 'Field Maintenance'

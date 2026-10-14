@@ -2,13 +2,12 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { Phone, Mail, MapPin, Facebook, Instagram, Linkedin } from 'lucide-react';
+import { Phone, Mail, MapPin, Facebook } from 'lucide-react';
 
 const services = [
   'Land Clearing',
   'Debris Removal',
-  'Dirt Work & Site Prep',
-  'Food Plot Creation',
+  'Dirt Work, Site Prep & Excavation',
   'Gravel Driveways',
   'Pond Cleanup',
   'Brush Hogging',
@@ -17,12 +16,8 @@ const services = [
 ];
 
 const serviceAreas = [
-  'County Name 1',
-  'County Name 2', 
-  'County Name 3',
-  'City Name 1',
-  'City Name 2',
-  'City Name 3'
+  'Ozark, AR',
+  'Franklin County, AR'
 ];
 
 export function Footer() {
@@ -45,25 +40,13 @@ export function Footer() {
             {/* Social Links */}
             <div className="flex space-x-4">
               <a
-                href="#"
+                href="https://www.facebook.com/p/Cold-Creek-Land-Services-61579381273372/"
                 className="text-gray-300 hover:text-safety-orange transition-colors duration-200"
                 aria-label="Facebook"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 <Facebook className="h-5 w-5" />
-              </a>
-              <a
-                href="#"
-                className="text-gray-300 hover:text-safety-orange transition-colors duration-200"
-                aria-label="Instagram"
-              >
-                <Instagram className="h-5 w-5" />
-              </a>
-              <a
-                href="#"
-                className="text-gray-300 hover:text-safety-orange transition-colors duration-200"
-                aria-label="LinkedIn"
-              >
-                <Linkedin className="h-5 w-5" />
               </a>
             </div>
           </div>
@@ -108,10 +91,10 @@ export function Footer() {
                 <Phone className="h-5 w-5 text-safety-orange flex-shrink-0" />
                 <div>
                   <a
-                    href="tel:+1XXXXXXXXXX"
+                    href="tel:+14796756403"
                     className="text-gray-300 hover:text-white transition-colors duration-200"
                   >
-                    (XXX) XXX-XXXX
+                    (479) 675-6403
                   </a>
                 </div>
               </div>
@@ -120,10 +103,10 @@ export function Footer() {
                 <Mail className="h-5 w-5 text-safety-orange flex-shrink-0" />
                 <div>
                   <a
-                    href="mailto:info@coldcreeklandservices.com"
+                    href="mailto:coltonlee@coldcreeklandservices.com"
                     className="text-gray-300 hover:text-white transition-colors duration-200 break-words"
                   >
-                    info@coldcreeklandservices.com
+                    coltonlee@coldcreeklandservices.com
                   </a>
                 </div>
               </div>
@@ -132,8 +115,8 @@ export function Footer() {
                 <MapPin className="h-5 w-5 text-safety-orange flex-shrink-0 mt-0.5" />
                 <div>
                   <p className="text-gray-300 text-sm">
-                    Serving Local Counties<br />
-                    State, ZIP Code
+                    Ozark, AR & Surrounding Areas<br />
+                    72949
                   </p>
                 </div>
               </div>
@@ -166,7 +149,7 @@ export function Footer() {
             <p className="text-gray-300 text-sm">
               © {currentYear} Cold Creek Land Services. All rights reserved.
             </p>
-            <div className="flex space-x-6 text-sm">
+            {/* <div className="flex space-x-6 text-sm">
               <Link
                 href="/privacy"
                 className="text-gray-300 hover:text-white transition-colors duration-200"
@@ -179,13 +162,13 @@ export function Footer() {
               >
                 Terms of Service
               </Link>
-            </div>
+            </div> */}
           </div>
           
-          {/* License & Insurance */}
+          {/* Insurance */}
           <div className="mt-4 text-center">
             <p className="text-xs text-gray-400">
-              Licensed & Insured | License #XXXXXX | Fully Bonded
+              Licensed & Insured | Fully Bonded
             </p>
           </div>
         </div>

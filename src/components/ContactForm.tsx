@@ -40,8 +40,8 @@ export function ContactForm() {
       // EmailJS configuration
       // Note: You'll need to set up EmailJS account and replace these values
       await emailjs.send(
-        'YOUR_SERVICE_ID', // Replace with your EmailJS service ID
-        'YOUR_TEMPLATE_ID', // Replace with your EmailJS template ID
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
         {
           from_name: `${data.firstName} ${data.lastName}`,
           from_email: data.email,
@@ -49,9 +49,9 @@ export function ContactForm() {
           service: data.service,
           project_description: data.projectDescription,
           acreage: data.acreage || 'Not specified',
-          to_email: 'info@coldcreeklandservices.com',
+          to_email: 'coltonlee@coldcreeklandservices.com',
         },
-        'YOUR_PUBLIC_KEY' // Replace with your EmailJS public key
+        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!
       );
 
       setSubmitStatus('success');
@@ -71,7 +71,7 @@ export function ContactForm() {
           Request Your Free Quote
         </h2>
         <p className="text-stone-gray">
-          Fill out the form below and we'll get back to you within 24 hours with a detailed estimate.
+          Fill out the form below and we&apos;ll get back to you within 24 hours with a detailed estimate.
         </p>
       </div>
 
@@ -82,7 +82,7 @@ export function ContactForm() {
           <div>
             <h3 className="text-sm font-medium text-green-800">Quote request submitted!</h3>
             <p className="text-sm text-green-700">
-              We'll review your project details and get back to you within 24 hours.
+              We&apos;ll review your project details and get back to you within 24 hours.
             </p>
           </div>
         </div>
@@ -95,7 +95,7 @@ export function ContactForm() {
           <div>
             <h3 className="text-sm font-medium text-red-800">Submission failed</h3>
             <p className="text-sm text-red-700">
-              Please try again or contact us directly at (XXX) XXX-XXXX.
+              Please try again or contact us directly at (479) 675-6403.
             </p>
           </div>
         </div>
@@ -209,13 +209,13 @@ export function ContactForm() {
         <p className="text-stone-gray mb-4">Prefer to speak directly?</p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <a
-            href="tel:+1XXXXXXXXXX"
+            href="tel:+14796756403"
             className="inline-flex items-center justify-center px-6 py-3 border border-forest-green text-forest-green rounded-lg hover:bg-forest-green hover:text-white transition-colors"
           >
-            Call (XXX) XXX-XXXX
+            Call (479) 675-6403
           </a>
           <a
-            href="mailto:info@coldcreeklandservices.com"
+            href="mailto:coltonlee@coldcreeklandservices.com"
             className="inline-flex items-center justify-center px-6 py-3 border border-forest-green text-forest-green rounded-lg hover:bg-forest-green hover:text-white transition-colors"
           >
             Send Email

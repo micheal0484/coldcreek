@@ -1,13 +1,36 @@
 import { Navigation, Footer, GalleryGrid, BeforeAfterSlider } from '@/components';
+import { ComingSoon } from '@/components/ComingSoon';
+import { COMING_SOON_MODE } from '@/lib/config';
+import { defaultOgImage } from '@/lib/seo';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Project Gallery | Cold Creek Land Services',
   description: 'View our completed land clearing and management projects. See before and after photos of our professional work.',
   keywords: 'land clearing gallery, before after photos, project portfolio, completed work',
+  alternates: {
+    canonical: '/gallery/',
+  },
+  openGraph: {
+    title: 'Project Gallery | Cold Creek Land Services',
+    description: 'View our completed land clearing and management projects. See before and after photos of our professional work.',
+    url: '/gallery/',
+    images: [defaultOgImage],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Project Gallery | Cold Creek Land Services',
+    description: 'View our completed land clearing and management projects.',
+    images: [defaultOgImage.url],
+  },
 };
 
 export default function GalleryPage() {
+  // TEMPORARY: remove this check (see src/lib/config.ts) once the owner approves the full site.
+  if (COMING_SOON_MODE) {
+    return <ComingSoon />;
+  }
+
   return (
     <>
       <Navigation />

@@ -1,13 +1,36 @@
 import { Navigation, Footer, ContactForm, ContactInfo } from '@/components';
+import { ComingSoon } from '@/components/ComingSoon';
+import { COMING_SOON_MODE } from '@/lib/config';
+import { defaultOgImage } from '@/lib/seo';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Contact Us | Cold Creek Land Services - Get Your Free Quote',
   description: 'Contact Cold Creek Land Services for professional land clearing and management. Get your free quote today. Licensed and insured.',
   keywords: 'contact land services, free quote, land clearing estimate, cold creek contact',
+  alternates: {
+    canonical: '/contact/',
+  },
+  openGraph: {
+    title: 'Contact Us | Cold Creek Land Services',
+    description: 'Contact Cold Creek Land Services for professional land clearing and management. Get your free quote today.',
+    url: '/contact/',
+    images: [defaultOgImage],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Contact Us | Cold Creek Land Services',
+    description: 'Get your free quote today. Licensed and insured.',
+    images: [defaultOgImage.url],
+  },
 };
 
 export default function ContactPage() {
+  // TEMPORARY: remove this check (see src/lib/config.ts) once the owner approves the full site.
+  if (COMING_SOON_MODE) {
+    return <ComingSoon />;
+  }
+
   return (
     <>
       <Navigation />
@@ -43,24 +66,20 @@ export default function ContactPage() {
                   </p>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm">
                     <div className="space-y-1">
-                      <p className="font-medium text-forest-green">Counties:</p>
+                      <p className="font-medium text-forest-green">County:</p>
                       <ul className="text-stone-gray space-y-1">
-                        <li>• County Name 1</li>
-                        <li>• County Name 2</li>
-                        <li>• County Name 3</li>
+                        <li>• Franklin County, AR</li>
                       </ul>
                     </div>
                     <div className="space-y-1">
-                      <p className="font-medium text-forest-green">Cities:</p>
+                      <p className="font-medium text-forest-green">City:</p>
                       <ul className="text-stone-gray space-y-1">
-                        <li>• City Name 1</li>
-                        <li>• City Name 2</li>
-                        <li>• City Name 3</li>
+                        <li>• Ozark, AR</li>
                       </ul>
                     </div>
                   </div>
                   <p className="text-xs text-stone-gray mt-4">
-                    * Don't see your area? Contact us to confirm availability.
+                    * Don&apos;t see your area? Contact us to confirm availability.
                   </p>
                 </div>
 
@@ -74,7 +93,7 @@ export default function ContactPage() {
                     We offer emergency cleanup services.
                   </p>
                   <a
-                    href="tel:+1XXXXXXXXXX"
+                    href="tel:+14796756403"
                     className="inline-flex items-center justify-center bg-white text-safety-orange px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
                   >
                     Call Emergency Line
@@ -112,12 +131,12 @@ export default function ContactPage() {
                 </h3>
                 <p className="text-stone-gray">
                   Yes, we are fully licensed, insured, and bonded. We carry comprehensive 
-                  liability insurance and worker's compensation for your peace of mind.
+                  liability insurance and worker&apos;s compensation for your peace of mind.
                 </p>
               </div>
               <div className="bg-white rounded-lg p-6">
                 <h3 className="text-lg font-semibold text-forest-green mb-2">
-                  What's included in your services?
+                  What&apos;s included in your services?
                 </h3>
                 <p className="text-stone-gray">
                   Our services include all necessary equipment, labor, and cleanup. 

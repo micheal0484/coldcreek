@@ -47,7 +47,7 @@ export function ServicesSection() {
         >
           <div className="bg-white rounded-2xl shadow-xl p-8 max-w-4xl mx-auto">
             <h3 className="text-2xl md:text-3xl font-bold text-forest-green mb-4">
-              Don't See What You Need?
+              Don&apos;t See What You Need?
             </h3>
             <p className="text-stone-gray mb-6 text-lg">
               We offer custom land management solutions. Contact us to discuss your specific project requirements.
@@ -60,7 +60,7 @@ export function ServicesSection() {
                 Get Custom Quote
               </a>
               <a
-                href="tel:+1XXXXXXXXXX"
+                href="tel:+14796756403"
                 className="inline-flex items-center justify-center rounded-md border-2 border-forest-green px-8 py-4 text-lg font-semibold text-forest-green hover:bg-forest-green hover:text-white transition-colors duration-200"
               >
                 Call Now

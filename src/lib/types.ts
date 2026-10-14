@@ -33,13 +33,13 @@ export const services: Service[] = [
   },
   {
     id: 'dirt-work',
-    name: 'Dirt Work & Site Prep',
+    name: 'Dirt Work, Site Prep & Excavation',
     description: 'Professional site preparation and excavation services'
   },
   {
-    id: 'food-plot',
-    name: 'Food Plot Creation',
-    description: 'Creating and maintaining wildlife food plots'
+    id: 'septic-system',
+    name: 'Septic System Installation',
+    description: 'Installation and maintenance of septic systems'
   },
   {
     id: 'gravel-driveway',

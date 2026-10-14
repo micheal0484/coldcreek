@@ -12,8 +12,8 @@ interface BeforeAfterSliderProps {
 }
 
 export function BeforeAfterSlider({
-  beforeImage = 'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?ixlib=rb-4.0.3&auto=format&fit=crop&w=2340&q=80',
-  afterImage = 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=2340&q=80',
+  beforeImage = '/images/demo_before.jpg',
+  afterImage = '/images/demo_after.jpg',
   beforeAlt = 'Before land clearing - overgrown property',
   afterAlt = 'After land clearing - cleared and maintained property'
 }: BeforeAfterSliderProps) {

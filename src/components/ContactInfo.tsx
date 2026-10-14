@@ -12,7 +12,7 @@ export function ContactInfo() {
         </h2>
         <p className="text-lg text-stone-gray mb-8">
           Ready to get started? Reach out to us using any of the methods below. 
-          We're here to help with all your land management needs.
+          We&apos;re here to help with all your land management needs.
         </p>
       </div>
 
@@ -25,10 +25,10 @@ export function ContactInfo() {
           <div>
             <h3 className="text-lg font-semibold text-forest-green">Phone</h3>
             <a
-              href="tel:+1XXXXXXXXXX"
+              href="tel:+14796756403"
               className="text-stone-gray hover:text-forest-green transition-colors"
             >
-              (XXX) XXX-XXXX
+              (479) 675-6403
             </a>
             <p className="text-sm text-stone-gray">Call or text for fastest response</p>
           </div>
@@ -41,12 +41,12 @@ export function ContactInfo() {
           <div>
             <h3 className="text-lg font-semibold text-forest-green">Email</h3>
             <a
-              href="mailto:info@coldcreeklandservices.com"
+              href="mailto:coltonlee@coldcreeklandservices.com"
               className="text-stone-gray hover:text-forest-green transition-colors break-words"
             >
-              info@coldcreeklandservices.com
+              coltonlee@coldcreeklandservices.com
             </a>
-            <p className="text-sm text-stone-gray">We respond within 4 hours</p>
+            <p className="text-sm text-stone-gray">We usually try to respond within 4 hours</p>
           </div>
         </div>
 
@@ -57,8 +57,8 @@ export function ContactInfo() {
           <div>
             <h3 className="text-lg font-semibold text-forest-green">Service Area</h3>
             <p className="text-stone-gray">
-              Local Counties & Surrounding Areas<br />
-              State, ZIP Code
+              Ozark, AR & Surrounding Areas<br />
+              72949
             </p>
             <p className="text-sm text-stone-gray">Mobile service - we come to you</p>
           </div>
@@ -96,14 +96,13 @@ export function ContactInfo() {
           <Shield className="h-8 w-8 text-safety-orange" />
           <div>
             <h4 className="font-semibold text-forest-green">Licensed & Insured</h4>
-            <p className="text-sm text-stone-gray">License #XXXXXX</p>
           </div>
         </div>
         <div className="flex items-center space-x-3 p-4 bg-white rounded-lg border border-earth-tan">
           <Award className="h-8 w-8 text-safety-orange" />
           <div>
             <h4 className="font-semibold text-forest-green">Locally Owned</h4>
-            <p className="text-sm text-stone-gray">Serving since 20XX</p>
+            <p className="text-sm text-stone-gray">Serving since 2026</p>
           </div>
         </div>
       </div>

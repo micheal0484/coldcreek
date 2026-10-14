@@ -18,22 +18,22 @@ export function HeroSection() {
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Video/Image */}
       <div className="absolute inset-0 z-0">
-        <div 
+        <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{
-            backgroundImage: "linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=2340&q=80')"
+            backgroundImage: "linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/images/hero1.jpg')"
           }}
         />
-        {/* Placeholder for actual background video */}
-        {/* <video
+        {/* Placeholder for actual background video
+        {<video
           className="absolute inset-0 w-full h-full object-cover"
           autoPlay
           muted
           loop
           playsInline
         >
-          <source src="/videos/land-clearing-hero.mp4" type="video/mp4" />
-        </video> */}
+          <source src="/images/Septic.mp4" type="video/mp4" />
+        </video>} */}
       </div>
 
       {/* Content */}
@@ -85,7 +85,7 @@ export function HeroSection() {
               size="xl" 
               variant="outline"
               onClick={scrollToServices}
-              className="text-lg px-8 py-4 border-white text-white hover:bg-white hover:text-forest-green"
+              className="text-lg px-8 py-4 border-white text-white bg-white"
             >
               View Our Services
             </Button>
@@ -111,27 +111,27 @@ export function HeroSection() {
               <span>Serving Local Areas</span>
             </div>
           </motion.div>
-        </motion.div>
 
-        {/* Scroll Indicator */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 1.5 }}
-          className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
-        >
-          <button
-            onClick={scrollToServices}
-            className="flex flex-col items-center gap-2 text-white/70 hover:text-white transition-colors duration-300"
+          {/* Scroll Indicator */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1, delay: 1.5 }}
+            className="flex justify-center"
           >
-            <span className="text-sm">Scroll to explore</span>
-            <motion.div
-              animate={{ y: [0, 5, 0] }}
-              transition={{ duration: 2, repeat: Infinity }}
+            <button
+              onClick={scrollToServices}
+              className="flex flex-col items-center gap-2 text-white/70 hover:text-white transition-colors duration-300"
             >
-              <ArrowDown className="h-5 w-5" />
-            </motion.div>
-          </button>
+              <span className="text-sm">Scroll to explore</span>
+              <motion.div
+                animate={{ y: [0, 5, 0] }}
+                transition={{ duration: 2, repeat: Infinity }}
+              >
+                <ArrowDown className="h-5 w-5" />
+              </motion.div>
+            </button>
+          </motion.div>
         </motion.div>
       </div>
     </section>

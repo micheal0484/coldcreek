@@ -79,14 +79,14 @@ export function Navigation() {
                 isScrolled ? 'text-forest-green' : 'text-white'
               )}>
                 <Phone className="h-4 w-4" />
-                <span>(XXX) XXX-XXXX</span>
+                <a href="tel:4796756403">(479) 675-6403</a>
               </div>
               <div className={cn(
                 'flex items-center space-x-1 transition-colors duration-300',
                 isScrolled ? 'text-forest-green' : 'text-white'
               )}>
                 <Mail className="h-4 w-4" />
-                <span>info@coldcreeklandservices.com</span>
+                <a href="mailto:coltonlee@coldcreeklandservices.com">coltonlee@coldcreeklandservices.com</a>
               </div>
             </div>
 
@@ -142,11 +142,11 @@ export function Navigation() {
                 <div className="px-3 py-4 border-t border-stone-gray-light space-y-2">
                   <div className="flex items-center space-x-2 text-forest-green">
                     <Phone className="h-4 w-4" />
-                    <span className="text-sm">(XXX) XXX-XXXX</span>
+                    <span className="text-sm">(479) 675-6403</span>
                   </div>
                   <div className="flex items-center space-x-2 text-forest-green">
                     <Mail className="h-4 w-4" />
-                    <span className="text-sm">info@coldcreeklandservices.com</span>
+                    <span className="text-sm">coltonlee@coldcreeklandservices.com</span>
                   </div>
                   <Button size="sm" variant="primary" className="w-full mt-3" onClick={() => window.location.href = '/contact'}>
                     Get Free Quote
