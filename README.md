@@ -13,7 +13,7 @@ A modern, responsive website for Cold Creek Land Services - a professional land 
 
 ## 🚀 Tech Stack
 
-- **Framework**: Next.js 16.2.1 (App Router), built as a **static export** — note: this is a much newer major version than most AI tooling and documentation assume; consult `AGENTS.md` before making framework-level changes
+- **Framework**: Next.js 16 (App Router), built as a **static export** — note: this is a much newer major version than most AI tooling and documentation assume; consult `AGENTS.md` before making framework-level changes
 - **Language**: TypeScript
 - **Styling**: Tailwind CSS v4
 - **Animations**: Framer Motion
@@ -74,6 +74,15 @@ Not currently shown anywhere on the site (intentionally omitted, not a placehold
    ```bash
    npm install
    ```
+   This also installs `react-google-recaptcha` (and its `@types` package), which the contact form needs for [Spam Protection](#️-spam-protection).
+
+   Optional maintenance — `npm install` may report vulnerabilities from transitive dependencies:
+   ```bash
+   npm audit            # list known vulnerabilities
+   npm audit fix        # apply safe, non-breaking fixes
+   npm update           # bump packages within their package.json version ranges
+   ```
+   Avoid `npm audit fix --force`: it can install breaking major versions (this project is on Next.js 16 and pins React 19.2.4). After any audit fix or update, run `npm run build` to confirm the site still builds.
 
 3. **Environment Setup**
    Create a `.env.local` file and configure EmailJS:
@@ -81,7 +90,9 @@ Not currently shown anywhere on the site (intentionally omitted, not a placehold
    NEXT_PUBLIC_EMAILJS_SERVICE_ID=your_service_id
    NEXT_PUBLIC_EMAILJS_TEMPLATE_ID=your_template_id
    NEXT_PUBLIC_EMAILJS_PUBLIC_KEY=your_public_key
+   NEXT_PUBLIC_RECAPTCHA_SITE_KEY=your_recaptcha_site_key
    ```
+   > The reCAPTCHA key is part of [Spam Protection](#️-spam-protection) — it needs matching setup in the EmailJS dashboard.
    > See the note in **EmailJS Configuration** below — these env vars aren't actually read by the code yet.
 
 4. **Run Development Server**
@@ -110,6 +121,39 @@ Not currently shown anywhere on the site (intentionally omitted, not a placehold
 4. Update the EmailJS configuration in `ContactForm.tsx`
 
 > **Status**: wired up and working. `ContactForm.tsx` reads `process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID`, `NEXT_PUBLIC_EMAILJS_TEMPLATE_ID`, and `NEXT_PUBLIC_EMAILJS_PUBLIC_KEY` from `.env.local` at build time, and the real values are confirmed to be inlined into the exported JS bundle. Since this is a static export (no server), these **must be present in `.env.local` whenever `npm run build` is run** — if that file is missing or the vars lack the `NEXT_PUBLIC_` prefix, the form will silently build but fail to send.
+
+## 🛡️ Spam Protection
+
+The contact form has two layers, both in `ContactForm.tsx`:
+
+1. **Honeypot + time check** (always on, no setup): a hidden `website` field and a 3-second minimum fill time. Bots that trip either one get a fake "success" message and nothing is sent.
+2. **Google reCAPTCHA v2 ("I'm not a robot" checkbox)**: the token is sent to EmailJS as `g-recaptcha-response`, and **EmailJS verifies it server-side and rejects requests without a valid token**. This is what blocks bots that skip the form and post straight to EmailJS.
+
+> Only reCAPTCHA **v2 Checkbox** works with EmailJS. v3 and Turnstile are not supported.
+
+### One-time setup (required for layer 2)
+
+1. **Get reCAPTCHA keys**
+   1. Go to the [reCAPTCHA admin console](https://www.google.com/recaptcha/admin/create) and sign in with a Google account.
+   2. Label: `Cold Creek Land Services`. Type: **Challenge (v2)** → **"I'm not a robot" Checkbox**.
+   3. Domains: add the live domain (e.g. `coldcreeklandservices.com`) and `localhost` for testing. Only reCAPTCHA **v2** is supported by EmailJS.
+   4. Submit, then copy the **Site Key** (public) and **Secret Key** (private).
+2. **Add the Site Key to `.env.local`** (and rebuild — it is inlined at build time):
+   ```env
+   NEXT_PUBLIC_RECAPTCHA_SITE_KEY=your_site_key
+   ```
+3. **Give EmailJS the Secret Key** — this is a **per-template** setting, in the [EmailJS dashboard](https://dashboard.emailjs.com/):
+   1. Go to **Email Templates** and open the template the contact form uses (the one matching `NEXT_PUBLIC_EMAILJS_TEMPLATE_ID`).
+   2. Open the **Settings** tab.
+   3. Check **Enable reCAPTCHA V2 verification**.
+   4. Paste the **Secret Key** from the reCAPTCHA console.
+   5. Save the template.
+
+   Once enabled, EmailJS rejects any send request for that template that doesn't include a solved CAPTCHA. No extra code is needed — the form already passes the token as `g-recaptcha-response`.
+4. **Optional hardening**: in the EmailJS dashboard under **Account → Security**, restrict allowed domains to the live domain so other sites can't use your public key.
+5. Run `npm run build` and re-upload `out/`. Submit a test message to confirm the checkbox appears and the email arrives.
+
+> ⚠️ **Do not enable reCAPTCHA verification on the EmailJS template before the site key is deployed**, or every submission will be rejected. If `NEXT_PUBLIC_RECAPTCHA_SITE_KEY` is unset, the checkbox is hidden and only the honeypot layer runs.
 
 ## 🎨 Customization
 

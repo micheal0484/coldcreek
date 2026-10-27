@@ -1,8 +1,9 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import emailjs from '@emailjs/browser';
+import ReCAPTCHA from 'react-google-recaptcha';
 import { Button } from '@/components/ui/Button';
 import { Input } from '@/components/ui/Input';
 import { Textarea } from '@/components/ui/Textarea';
@@ -14,7 +15,12 @@ import { CheckCircle, AlertCircle, Send } from 'lucide-react';
 
 export function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error' | 'captcha'>('idle');
+  const recaptchaRef = useRef<ReCAPTCHA>(null);
+  // Spam protection: time the form was rendered, and a hidden field humans never fill in
+  const loadedAt = useRef(Date.now());
+  const honeypotRef = useRef<HTMLInputElement>(null);
+  const recaptchaSiteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
 
   const {
     register,
@@ -33,6 +39,19 @@ export function ContactForm() {
   ];
 
   const onSubmit = async (data: ContactFormData) => {
+    // Honeypot filled or submitted faster than a human could: pretend success, send nothing
+    if (honeypotRef.current?.value || Date.now() - loadedAt.current < 3000) {
+      setSubmitStatus('success');
+      reset();
+      return;
+    }
+
+    const captchaToken = recaptchaRef.current?.getValue();
+    if (recaptchaSiteKey && !captchaToken) {
+      setSubmitStatus('captcha');
+      return;
+    }
+
     setIsSubmitting(true);
     setSubmitStatus('idle');
 
@@ -50,15 +69,18 @@ export function ContactForm() {
           project_description: data.projectDescription,
           acreage: data.acreage || 'Not specified',
           to_email: 'coltonlee@coldcreeklandservices.com',
+          'g-recaptcha-response': captchaToken,
         },
         process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!
       );
 
       setSubmitStatus('success');
       reset();
+      recaptchaRef.current?.reset();
     } catch (error) {
       console.error('EmailJS error:', error);
       setSubmitStatus('error');
+      recaptchaRef.current?.reset();
     } finally {
       setIsSubmitting(false);
     }
@@ -102,6 +124,14 @@ export function ContactForm() {
       )}
 
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+        {/* Honeypot: hidden from humans and assistive tech, bots tend to fill it */}
+        <div aria-hidden="true" className="absolute -left-[9999px] h-0 w-0 overflow-hidden">
+          <label>
+            Website
+            <input type="text" name="website" tabIndex={-1} autoComplete="off" ref={honeypotRef} />
+          </label>
+        </div>
+
         {/* Name Fields */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <Input
@@ -175,6 +205,16 @@ export function ContactForm() {
             helperText="Approximate size helps us provide accurate estimates"
           />
         </div>
+
+        {/* reCAPTCHA v2 (verified server-side by EmailJS) */}
+        {recaptchaSiteKey && (
+          <div>
+            <ReCAPTCHA ref={recaptchaRef} sitekey={recaptchaSiteKey} />
+            {submitStatus === 'captcha' && (
+              <p className="mt-2 text-sm text-red-700">Please confirm you&apos;re not a robot.</p>
+            )}
+          </div>
+        )}
 
         {/* Submit Button */}
         <Button
